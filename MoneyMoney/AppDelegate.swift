@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		
+		//let url = URL(string: "https://api.exchangeratesapi.io/2010-01-12")!
+		let url = URL (string: "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01&symbols=USD,GBP")!
+		let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+			guard let data = data else { return }
+			print(String(data: data, encoding: .utf8)!)
+		}
+		
+		
+		task.resume()
 		return true
 	}
 
